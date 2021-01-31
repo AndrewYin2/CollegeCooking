@@ -20,7 +20,7 @@ if(strlen($first) < 3 || strlen($first) > 20)
 {
   $_SESSION['message'] = 'Illegal Username';
   $conn->close();
-  header("Location: http://localhost:8080/Soundboard/registration.php");
+  header("Location: http://localhost:8080/TAMUHack/registration.php");
 }
 if(strlen($last) < 3 || strlen($last) > 20)
 {

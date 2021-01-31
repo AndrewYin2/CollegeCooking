@@ -47,7 +47,7 @@ while($row = $result->fetch_assoc())
     <link href="https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap" rel="stylesheet">
     <body style="background-image: url('background2.jpg')"></body>        
         <div class="header" style="text-align:center">
-          <a href="college_cooking.html">
+          <a href="college_cooking.php">
             <img src="Logo2.png" alt="logo" style="margin:auto;width:350px">
           </a>
         </div><br>

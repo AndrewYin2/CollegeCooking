@@ -25,5 +25,5 @@ while($result && $row = $result->fetch_assoc())
 
 
 $conn->close();
-header("Location: http://localhost:8080/TAMUHack/search_recipe.html");
+header("Location: http://localhost:8080/TAMUHack/search_recipe.php");
 ?>

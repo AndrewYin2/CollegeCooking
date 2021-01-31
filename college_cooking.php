@@ -40,7 +40,7 @@
               <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne">
                 <div class="accordion-body" style="background-color:white;">
                   <div class="info-text">Don't know what to make? Use this to find a recipe that fits your preferences!</div>
-                  <div style="text-align:center;"><a href="search_recipe.html">Advanced Search</a></div>
+                  <div style="text-align:center;"><a href="search_recipe.php">Advanced Search</a></div>
                 </div>
               </div>
             </div>
@@ -66,7 +66,7 @@
               <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree">
                 <div class="accordion-body" style="background-color:white;">
                   <div class="info-text">Post and share your recipes for others to see!</div>
-                  <div style="text-align:center;"><a href="new_recipe.html">Click Here to Submit a New Recipe</a></div>
+                  <div style="text-align:center;"><a href="new_recipe.php">Click Here to Submit a New Recipe</a></div>
                 </div>
               </div>
             </div>
