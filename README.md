@@ -14,26 +14,26 @@ MySQL <br>
 USBWebserver <br>
 <br>
 _Setting up the DB:_ <br>
-Database:
-CollegeCooking
-Collated
+Database: <br>
+CollegeCooking <br>
+Collated <br> <br>
 
-Table 1:
-Name: users
-Cols: 2
-username TEXT
-password TEXT
+Table 1: <br>
+Name: users <br>
+Cols: 2 <br>
+username TEXT <br>
+password TEXT <br> <br>
 
-Table 2:
-Name: recipes
-Cols: 9
-rname  TEXT
-preptime  INT
-calories  INT
-ingredients  TEXT
-instructions  TEXT
-difficulty  TEXT
-price  TEXT
-pic  TEXT
-user TEXT
-index  INT,  INDEX, A_I
+Table 2: <br>
+Name: recipes <br>
+Cols: 9 <br>
+rname  TEXT <br>
+preptime  INT <br>
+calories  INT <br>
+ingredients  TEXT <br>
+instructions  TEXT <br>
+difficulty  TEXT <br>
+price  TEXT <br>
+pic  TEXT <br>
+user TEXT <br>
+index  INT,  INDEX, A_I <br>
