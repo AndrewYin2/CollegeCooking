@@ -11,16 +11,18 @@ if ($conn->connect_error) {
 }
 
 $name = $_POST['rname'];
-$time = $_POST['time'];
-$calories = $_POST['calories'];
+$minTime = $_POST['minTime'];
+$maxTime = $_POST['maxTime'];
+$minCalories = $_POST['minCalories'];
+$maxCalories = $_POST['maxCalories'];
 $ingredients = $_POST['ingnames'];
 $difficulty = $_POST['difficulty'];
 $price = $_POST['price'];
 $user = $_SESSION['loggedin'];
 
 $result0 = $conn->query('SELECT rname, preptime, calories, ingredients, instructions, difficulty, price, user FROM recipes WHERE rname = $name');
-$result1 = $conn->query('SELECT rname, preptime, calories, ingredients, instructions, difficulty, price, user FROM recipes WHERE ($time - 100) < preptime AND preptime < ($time + 100)');
-$result2 = $conn->query('SELECT rname, preptime, calories, ingredients, instructions, difficulty, price, user FROM recipes WHERE ($calories - 100) < calories AND calories < ($calories + 100)');
+$result1 = $conn->query('SELECT rname, preptime, calories, ingredients, instructions, difficulty, price, user FROM recipes WHERE ($minTime) < preptime AND preptime < ($maxTime)');
+$result2 = $conn->query('SELECT rname, preptime, calories, ingredients, instructions, difficulty, price, user FROM recipes WHERE ($minCalories) < calories AND calories < ($maxCalories)');
 $result3 = $conn->query('SELECT rname, preptime, calories, ingredients, instructions, difficulty, price, user FROM recipes');
 $result4 = $conn->query('SELECT rname, preptime, calories, ingredients, instructions, difficulty, price, user FROM recipes WHERE difficulty = $difficulty');
 $result5 = $conn->query('SELECT rname, preptime, calories, ingredients, instructions, difficulty, price, user FROM recipes WHERE price = $price');

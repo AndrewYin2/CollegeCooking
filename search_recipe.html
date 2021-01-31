@@ -16,24 +16,26 @@
 
         <div id="box" style="font-family:Indie Flower;border-radius: 25px;">
         <div id="form">
-            <h1 id="form-title">Submit Your Own Recipe!</h1><br>
-            <label>Enter your own creations here for others to see!</label><br><br>
+            <h1 id="form-title">Search for a Recipe</h1><br>
+            <label>Choose a recipe based on your preferences!</label><br><br>
             
             <form action="new_recipe_handler.php" method="POST">
                 <meta charset="UTF-8">
 
                 <label for="rname">Recipe Name:</label><br>
-                <input type="text" class="form-control" id="rname" name="rname" placeholder="Ex: Eggs Benedict" required><br>
+                <input type="text" class="form-control" id="rname" name="rname" placeholder="Ex: Eggs Benedict"><br>
                 
-                <label for="time">Prep Time:</label><br>
-                <input type="number" class="form-control" id="time" name="time" min="1" placeholder="Enter time in minutes..." required><br>
+                <label for="time">Prep Time Range:</label><br>
+                <input type="number" class="form-control" id="minTime" name="minTime" min="1" placeholder="Enter minimum time in minutes..."><br>
+                <input type="number" class="form-control" id="maxTime" name="maxTime" min="minTime" placeholder="Enter maximum time in minutes..."><br>
 
-                <label for="calories">Calories:</label><br>
-                <input type="number" class="form-control" id="calories" name="calories" min="1" placeholder="Enter calories per serving..." required><br>
+                <label for="calories">Calorie Range:</label><br>
+                <input type="number" class="form-control" id="minCalories" name="minCalories" min="1" placeholder="Enter minimum calories per serving..." ><br>
+                <input type="number" class="form-control" id="maxCalories" name="maxCalories" min="minCalories" placeholder="Enter maximum calories per serving..." ><br>
 
                 <label for="ings">Ingredients:</label><br>
                 <input type="text" id="ings" name="ings" placeholder="Ex: Eggs, English Muffins, etc.">
-                <input hidden type="text" id="ingnames" name="ingnames" placeholder="hidden value" required>
+                <input hidden type="text" id="ingnames" name="ingnames" placeholder="hidden value">
                 <input style="font-family:Arial" class="btn btn-outline-primary btn-sm" type = "button" value="+" id="addIng"/>
                 <input style="font-family:Arial" class="btn btn-outline-primary btn-sm" type = "button" value="-" id="removeIng"/>
                 <ul id="ingList"></ul>
@@ -52,32 +54,6 @@
                         var list = document.getElementById("ingList");
                         var len = document.getElementById("ingnames").value.length - (list.lastChild.innerHTML.length + 2);
                         document.getElementById("ingnames").value = document.getElementById("ingnames").value.substring(0, len);
-                        list.removeChild(list.lastChild);
-                    };
-                </script>
-                
-                
-                <label for="inames">Instructions:</label><br>
-                <input type="text" id="step" name="step" placeholder="Ex: Beat two eggs.">
-                <input hidden type="text" id="inames" name="inames" placeholder="hidden value" required>
-                <input style="font-family:Arial" class="btn btn-outline-primary btn-sm" type = "button" value="+" id="addInstr"/>
-                <input style="font-family:Arial" class="btn btn-outline-primary btn-sm" type = "button" value="-" id="removeInstr"/>
-                <ol id="instrList"></ol>
-                <script>
-                    document.getElementById("addInstr").onclick = function() {
-                        var text = document.getElementById("step").value;
-                        var textNode = document.createTextNode(text);
-                        var li = document.createElement("li");
-                        li.appendChild(textNode);
-                        document.getElementById("instrList").appendChild(li);
-                        document.getElementById("step").value = "";
-                        document.getElementById("inames").value += text + ", ";
-                    };
-
-                    document.getElementById("removeInstr").onclick = function() {
-                        var list = document.getElementById("instrList");
-                        var len = document.getElementById("inames").value.length - (list.lastChild.innerHTML.length + 2);
-                        document.getElementById("inames").value = document.getElementById("inames").value.substring(0, len);
                         list.removeChild(list.lastChild);
                     };
                 </script>
