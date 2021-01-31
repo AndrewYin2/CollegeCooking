@@ -12,7 +12,7 @@ if ($conn->connect_error) {
 
 $index = $_GET['index'];
 
-$result = $conn->query("SELECT rname, preptime, calories, ingredients, instructions, difficulty, price, user FROM recipes WHERE recipes.index = '$index'");
+$result = $conn->query("SELECT rname, preptime, calories, ingredients, instructions, difficulty, price, pic, user FROM recipes WHERE recipes.index = '$index'");
 $rname;
 $preptime;
 $calories;
@@ -20,6 +20,7 @@ $ingredients;
 $instructions;
 $difficulty;
 $price;
+$img;
 $user;
 
 while($row = $result->fetch_assoc())
@@ -31,6 +32,7 @@ while($row = $result->fetch_assoc())
   $instructions = $row['instructions'];
   $difficulty = $row['difficulty'];
   $price = $row['price'];
+  $img = $row['pic'];
   $user = $row['user'];
 }
     
@@ -59,9 +61,14 @@ while($row = $result->fetch_assoc())
             echo $rname;
             echo '</h3>';
 
+            echo '<div style="text-align:center">';
+            echo '<img src="'.$img.'" alt="icon" style="margin:auto;width:350px"/><br>';
             echo '<label>This recipe was made by: ';
             echo $user;
-            echo '</label><br><br>';
+            echo '</label>';
+            echo '</div><br><br>';
+         
+            
 
             echo '<label>Difficulty: ';
             echo $difficulty;

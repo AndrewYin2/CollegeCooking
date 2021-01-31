@@ -73,7 +73,7 @@
                 </select>
                 <br><br>
 
-                <input class="btn btn-primary" type="submit" value="Submit Recipe">
+                <input class="btn btn-primary" type="submit" value="Search Recipe">
                 <input class="btn btn-primary" type="reset">
 
                 <?php

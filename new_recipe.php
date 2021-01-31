@@ -19,7 +19,7 @@
             <h1 id="form-title">Submit Your Own Recipe!</h1><br>
             <label>Enter your own creations here for others to see!</label><br><br>
             
-            <form action="new_recipe_handler.php" method="POST">
+            <form action="new_recipe_handler.php" method="POST" enctype="multipart/form-data">
                 <meta charset="UTF-8">
 
                 <label for="rname">Recipe Name:</label><br>
@@ -84,9 +84,9 @@
 
                 <label for="difficulty">Choose a Difficulty Level:</label><br>
                 <select name="difficulty" id="difficulty">
-                    <option value="easy">Easy</option>
-                    <option value="intermediate">Intermediate</option>
-                    <option value="hard">Hard</option>
+                    <option value="Easy">Easy</option>
+                    <option value="Intermediate">Intermediate</option>
+                    <option value="Hard">Hard</option>
                 </select><br><br>
                 
                 <label for="price">Choose a Price Level:</label><br>
@@ -96,6 +96,9 @@
                     <option value="$$$">Expensive</option>
                 </select>
                 <br><br>
+
+                <label for="pic">Select a Picture:</label><br>
+                <input type="file" id="pic" name="pic" accept="image/*" required>
 
                 <input class="btn btn-primary" type="submit" value="Submit Recipe">
                 <input class="btn btn-primary" type="reset">

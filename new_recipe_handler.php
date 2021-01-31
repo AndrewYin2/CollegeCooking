@@ -19,9 +19,15 @@ $difficulty = $_POST['difficulty'];
 $price = $_POST['price'];
 $user = $_SESSION['loggedin'];
 
+$img = $_FILES["pic"]["name"];
+$tempName = $_FILES["pic"]["tmp_name"];
+echo $img;
+echo $tempName;
+move_uploaded_file($tempName, $img);
 
-$stmt = $conn->prepare("INSERT INTO recipes (rname, preptime, calories, ingredients, instructions, difficulty, price, user) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
-$stmt->bind_param('siisssss', $name, $time, $calories, $ingredients, $instructions, $difficulty, $price, $user);
+
+$stmt = $conn->prepare("INSERT INTO recipes (rname, preptime, calories, ingredients, instructions, difficulty, price, pic, user) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)");
+$stmt->bind_param('siissssss', $name, $time, $calories, $ingredients, $instructions, $difficulty, $price, $img, $user);
 $stmt->execute();
 
 $stmt->close();
