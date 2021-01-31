@@ -1,0 +1,23 @@
+.header {
+    padding: 40px;
+    text-align: center;
+    color: white;
+}
+
+#search {
+    margin: auto;
+    width: 70vw;
+}
+
+#new-recipe {
+    margin: auto;
+}
+
+#box {
+    width: 70vw;
+    border: none;
+    padding: 50px;
+    margin: auto;
+    margin-top: 50px;
+    background: rgba(255, 255, 255, 0.8);
+}
