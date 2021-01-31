@@ -10,7 +10,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap" rel="stylesheet">
     <body style="background-image: url('background.jpg')">
-        <div style="text-align:center"><a href="college_cooking.html">
+        <div style="text-align:center"><a href="college_cooking.php">
             <img src="Logo2.png" alt="logo" style="margin:auto;width:350px">
         </a></div>
 
@@ -19,7 +19,7 @@
             <h1 id="form-title">Search for a Recipe</h1><br>
             <label>Choose a recipe based on your preferences!</label><br><br>
             
-            <form action="new_recipe_handler.php" method="POST">
+            <form action="search_recipe_handler.php" method="POST">
                 <meta charset="UTF-8">
 
                 <label for="rname">Recipe Name:</label><br>
@@ -60,21 +60,31 @@
 
                 <label for="difficulty">Choose a Difficulty Level:</label><br>
                 <select name="difficulty" id="difficulty">
-                    <option value="easy">Easy 👶</option>
-                    <option value="intermediate">Intermediate 😀</option>
-                    <option value="hard">Hard 👨‍🍳</option>
+                    <option value="Easy">Easy</option>
+                    <option value="Intermediate">Intermediate</option>
+                    <option value="Hard">Hard</option>
                 </select><br><br>
                 
                 <label for="price">Choose a Price Level:</label><br>
                 <select name="price" id="price">
-                    <option value="cheap">💲</option>
-                    <option value="medium">💲💲</option>
-                    <option value="expensive">💲💲💲</option>
+                    <option value="$">Cheap</option>
+                    <option value="$$">Moderate</option>
+                    <option value="$$$">Expensive</option>
                 </select>
                 <br><br>
 
                 <input class="btn btn-primary" type="submit" value="Submit Recipe">
                 <input class="btn btn-primary" type="reset">
+
+                <?php
+                if (isset($_SESSION['message']))
+                {
+                echo '<div class="alert alert-danger" role="alert">';
+                echo $_SESSION['message'];
+                echo '</div>';
+                unset($_SESSION['message']);
+                }
+                ?>
                 
             </form>
         </div>

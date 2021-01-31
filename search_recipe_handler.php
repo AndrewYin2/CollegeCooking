@@ -18,28 +18,79 @@ $maxCalories = $_POST['maxCalories'];
 $ingredients = $_POST['ingnames'];
 $difficulty = $_POST['difficulty'];
 $price = $_POST['price'];
-$user = $_SESSION['loggedin'];
 
-$result0 = $conn->query('SELECT rname, preptime, calories, ingredients, instructions, difficulty, price, user FROM recipes WHERE rname = $name');
-$result1 = $conn->query('SELECT rname, preptime, calories, ingredients, instructions, difficulty, price, user FROM recipes WHERE ($minTime) < preptime AND preptime < ($maxTime)');
-$result2 = $conn->query('SELECT rname, preptime, calories, ingredients, instructions, difficulty, price, user FROM recipes WHERE ($minCalories) < calories AND calories < ($maxCalories)');
-$result3 = $conn->query('SELECT rname, preptime, calories, ingredients, instructions, difficulty, price, user FROM recipes');
-$result4 = $conn->query('SELECT rname, preptime, calories, ingredients, instructions, difficulty, price, user FROM recipes WHERE difficulty = $difficulty');
-$result5 = $conn->query('SELECT rname, preptime, calories, ingredients, instructions, difficulty, price, user FROM recipes WHERE price = $price');
-$result6 = $conn->query('SELECT rname, preptime, calories, ingredients, instructions, difficulty, price, user FROM recipes WHERE user = $user');
-
-while($row = $result->fetch_assoc())
+$where_clause = "";
+if (!empty ($_POST['rname']))
 {
-  if($first == $row['username'] && $last == $row['password'])
+  $where_clause .= "rname = '" . $_POST['rname'] . "' AND ";
+}
+if (!empty ($_POST['minTime']))
+{
+  $where_clause .= "preptime >= '" . $_POST['minTime'] . "' AND ";
+}
+if (!empty ($_POST['maxTime']))
+{
+  $where_clause .= "preptime <= '" . $_POST['maxTime'] . "' AND ";
+}
+if (!empty ($_POST['minCalories']))
+{
+  $where_clause .= "calories >= '" . $_POST['minCalories'] . "' AND ";
+}
+if (!empty ($_POST['maxCalories']))
+{
+  $where_clause .= "calories <= '" . $_POST['maxCalories'] . "' AND ";
+}
+if (!empty ($_POST['difficulty']))
+{
+  $where_clause .= "difficulty = '" . $_POST['difficulty'] . "' AND ";
+}
+if (!empty ($_POST['price']))
+{
+  $where_clause .= "price = '" . $_POST['price'] . "' AND ";
+}
+// will need to eventually make it so at least one condition must be searched for
+$where_clause = substr ($where_clause, 0, -5);
+
+$result = $conn->query('SELECT * FROM recipes WHERE ' . $where_clause);
+
+
+$hit = false;
+$indexes = "";
+while ($result && $row = $result->fetch_assoc())
+{
+  if (!empty ($_POST['ingnames']))
   {
-    $_SESSION['loggedin'] = $first;
-    $test = false;
-    $conn->close();
-    header("Location: http://localhost:8080/TAMUHack/college_cooking.php");
+    $ingredients_array = explode (" ,", $_POST['ingnames']);
+    $contains_all = true;
+    foreach ($ingredients_array as $ingredient)
+    {
+      if (strpos ($row['ingredients'], $ingredient) === false)
+      {
+        $contains_all = false;
+      }
+    }
+    if ($contains_all)
+    {
+      $hit = true;
+      $indexes .= $row['index'] . "/";
+    }
+  }
+  else
+  {
+    $hit = true;
+    $indexes .= $row['index'] . "/";
   }
 }
 
-
-$conn->close();
-header("Location: http://localhost:8080/TAMUHack/college_cooking.php");
+if ($hit)
+{
+  $conn->close();
+  header("Location: search_results.php?indexes=" . $indexes);
+}
+else
+{
+  $_SESSION['message'] = 'No Recipes Found';
+  $conn->close();
+  header("Location: http://localhost:8080/TAMUHack/search_recipe.php");
+}
 ?>

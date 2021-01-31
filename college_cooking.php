@@ -8,16 +8,16 @@
         <title>CollegeCooking - View recipes and more!</title>
     </head>
     <link href='https://fonts.googleapis.com/css?family=Allura' rel='stylesheet'>
-    <body style="background-image: url('background2.jpg')"></body>
+    <body style="background-image: url('background2.jpg'); background-attachment: fixed; background-repeat: no-repeat;"></body>
 
         <?php
       if(isset($_SESSION['loggedin']))
       {
-        echo '<a href="logouthandler.php" class="btn btn-danger">Log Out</a>';
+        echo '<a href="logouthandler.php" class="btn btn-outline-danger btn-sm" style="font-family:Allura;font-size: 30px; margin: 8px 8px;font-weight: bold">Log Out</a>';
       }
       else
       {
-        echo '<a href="login.php" class="btn btn-primary">Log In</a>';
+        echo '<a href="login.php" class="btn btn-outline-primary btn-sm" style="font-family:Allura;font-size: 30px; margin: 8px 8px;font-weight: bold">Log In</a>';
       }
       ?>
 
@@ -47,13 +47,16 @@
             <div class="accordion-item">
               <h2 class="accordion-header" id="headingTwo">
                 <button style="text-align:center;font-weight: bold;font-size: 30px" class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                  Recipe Difficulty
+                  User Search
                 </button>
               </h2>
               <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo">
                 <div class="accordion-body" style="background-color:white;">
-                  <div class="info-text">Recipes have difficulty levels! Filter your search with your preferred difficulty level.</div>
-                  <img src="difficulty.png" style="height:400px">
+                  <div class="info-text">Want to find someone's recipes? Search for people by username.</div>
+                    <form action="profile_search_handler.php" method="POST">
+                      <input style="font-family:Allura;font-size: 22px" type="text" class="form-control" name="profile_search" id="profile_search" placeholder="Search for a user:">
+                      <input type="submit" style="display:none">
+                  </form>
                 </div>
               </div>
             </div>

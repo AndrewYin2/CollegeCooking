@@ -2,6 +2,7 @@
 <!doctype html>
 <html lang="en">
 <head>
+  <link rel="stylesheet" type="text/css" href="login.css">
   <!-- Required meta tags -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -11,22 +12,26 @@
 
   <title>Bootstrap Assignment</title>
 </head>
-<body>
-  <div class="container-fluid">
-    <nav class="navbar navbar-expand-lg navbar-light bg-light justify-content-end">
-          <span>Need an account?</span>&nbsp;&nbsp;
-          <a href="registration.php" class="btn btn-success">Register</a>
-    </nav>
-  </div>
+<body style="background-image: url('background2.jpg')">
+<div style="text-align:center"><a href="college_cooking.php">
+            <img src="Logo2.png" alt="logo" style="margin:auto;width:350px">
+        </a></div>
+</body>
 
-  <div class="container-fluid">
+<body>
+
+  <div class="container-fluid" id="box">
     <div class="jumbotron">
       <h1 class="display-4">LOGIN</h1>
       <hr class="my-4">
+      <nav class="navbar navbar-expand-lg navbar-light bg-light justify-content-end">
+          <span>Need an account?</span>&nbsp;&nbsp;
+          <a href="registration.php" class="btn btn-success">Register</a>
+    </nav>
     </div>
   </div>
 
-  <div class="container-fluid">
+  <div class="container-fluid" id = "box">
     <div class="row justify-content-center">
       <form action="loginhandler.php" method="POST">
         <br>
@@ -34,14 +39,14 @@
           <label for="username">Username</label>
           <div class="form-group col-md-12">
             <input type="text" class="form-control" id="username" name="username" placeholder="Username">
-          </div>
+          </div><br>
         </div>
         <div class="form-row">
           <label for="password">Password</label>
           <div class="form-group col-md-12">
             <input type="password" class="form-control" id="password" name="password" placeholder="Password">
           </div>
-        </div>
+        </div><br>
         <button type="submit" class="btn btn-primary mb-2">Submit</button>
         <?php
         if (isset($_SESSION['message']))

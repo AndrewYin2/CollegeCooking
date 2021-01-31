@@ -53,7 +53,7 @@ while($row = $result->fetch_assoc())
         </div><br>
         <div id="box" style="font-family:Indie Flower;border-radius: 25px;">
 
-        <div class="accordion" id="box" style="font-family:Allura;font-size: 22px;border-radius: 25px;">
+        <div class="accordion" style="font-family:Indie Flower;border-radius: 25px;">
         <?php
             echo '<h3 style="text-align:center;font-weight: bold;font-size: 50px">';
             echo $rname;
@@ -73,9 +73,10 @@ while($row = $result->fetch_assoc())
 
             echo '<label>Approx. Prep Time: ';
             echo $preptime;
+            echo " minute(s)";
             echo '</label><br>';
 
-            echo '<label>Calories per Serving:';
+            echo '<label>Calories per Serving: ';
             echo $calories;
             echo '</label><br><br>';
             ?>
@@ -86,10 +87,16 @@ while($row = $result->fetch_assoc())
                 </button>
               </h2>
               <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo">
-                <div class="accordion-body" style="background-color:white;">
+                <div class="accordion-body" id="ingredients" style="background-color:white;">
                     <?php
                     echo '<div class="info-text">';
-                    echo $ingredients;
+                    $ingredients_array = explode (", ", $ingredients);
+                    unset($ingredients_array[count($ingredients_array)-1]);
+                    foreach ($ingredients_array as $value) {
+                      echo "- ";
+                      echo $value;
+                      echo '<br>';
+                    }
                     echo '</div>';
                     ?>
                 </div>
@@ -105,7 +112,15 @@ while($row = $result->fetch_assoc())
                 <div class="accordion-body" style="background-color:white;">
                     <?php
                     echo '<div class="info-text">';
-                    echo $ingredients;
+                    echo '<ol>';
+                    $instructions_array = explode (", ", $instructions);
+                    unset($instructions_array[count($instructions_array)-1]);
+                    foreach ($instructions_array as $value) {
+                      echo '<li>';
+                      echo $value;
+                      echo '</li>';
+                    }
+                    echo '</ol>';
                     echo '</div>';
                     ?>
                 </div>

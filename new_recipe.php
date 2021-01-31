@@ -84,16 +84,16 @@
 
                 <label for="difficulty">Choose a Difficulty Level:</label><br>
                 <select name="difficulty" id="difficulty">
-                    <option value="easy">Easy 👶</option>
-                    <option value="intermediate">Intermediate 😀</option>
-                    <option value="hard">Hard 👨‍🍳</option>
+                    <option value="easy">Easy</option>
+                    <option value="intermediate">Intermediate</option>
+                    <option value="hard">Hard</option>
                 </select><br><br>
                 
                 <label for="price">Choose a Price Level:</label><br>
                 <select name="price" id="price">
-                    <option value="cheap">💲</option>
-                    <option value="medium">💲💲</option>
-                    <option value="expensive">💲💲💲</option>
+                    <option value="$">Cheap</option>
+                    <option value="$$">Moderate</option>
+                    <option value="$$$">Expensive</option>
                 </select>
                 <br><br>
 
