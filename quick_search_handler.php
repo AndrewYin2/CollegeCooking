@@ -11,19 +11,19 @@ if ($conn->connect_error) {
 }
 
 $name = $_POST['search'];
-print ($name);
 
 $result = $conn->query("SELECT * FROM recipes WHERE recipes.rname = '$name'");
 
-while($result && $row = $result->fetch_assoc())
+if ($result && $row = $result->fetch_assoc())
 {
     $index = $row['index'];
-    print ($index);
     $conn->close();
-    header("Location: http://localhost:8080/TAMUHack/recipe_page.php?index=" . $index);
+    header("Location: recipe_page.php?index=" . $index);
+}
+else
+{
+    $conn->close();
+    header("Location: search_recipe.php");
 }
 
-
-$conn->close();
-header("Location: http://localhost:8080/TAMUHack/search_recipe.php");
 ?>

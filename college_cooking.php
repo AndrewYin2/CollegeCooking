@@ -17,13 +17,13 @@
       }
       else
       {
-        echo '<a href="loginhandler.php" class="btn btn-primary">Log In</a>';
+        echo '<a href="login.php" class="btn btn-primary">Log In</a>';
       }
       ?>
 
         <div class="header">
             <img src="Logo2.png" alt="logo" style="margin:auto">
-            <form action="quick_search_handler.phpx" method="POST">
+            <form action="quick_search_handler.php" method="POST">
                 <input style="font-family:Allura;font-size: 22px" type="text" class="form-control" name="search" id="search" placeholder="Quick search for a recipe:">
                 <input type="submit" style="display:none">
             </form>
