@@ -13,6 +13,7 @@ Bootstrap <br>
 MySQL <br>
 USBWebserver <br>
 <br>
+http://localhost:8080/college_cooking.php <br> <br>
 _Setting up the DB:_ <br>
 Database: <br>
 CollegeCooking <br>
